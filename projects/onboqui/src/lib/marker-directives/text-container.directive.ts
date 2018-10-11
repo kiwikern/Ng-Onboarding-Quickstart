@@ -12,8 +12,8 @@ export class TextContainerDirective implements OnInit {
   }
 
   ngOnInit() {
-    const text = this.renderer.createText(this.service.getText());
     if (this.service.getText()) {
+      const text = this.renderer.createText(this.service.getText());
       this.renderer.appendChild(this.el.nativeElement, text);
     } else {
       console.error('Your onboarding view component has a TextContainer but no text was set. Set the directive oboquiText.');

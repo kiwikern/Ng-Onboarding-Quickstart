@@ -3,7 +3,6 @@
  */
 
 export * from './lib/onboarding.service';
-export * from './lib/onboarding.component';
 export * from './lib/onboarding.module';
 export * from './lib/onboarding.directive';
 export * from './lib/onboarding-config.interface';
