@@ -6,14 +6,17 @@ import { InternalOnboardingService } from './internal-onboarding.service';
 import { OnboardingConfig } from './onboarding-config.interface';
 import { CloseDirective } from './marker-directives/close.directive';
 import { TextContainerDirective } from './marker-directives/text-container.directive';
+import { OnboardingConfigToken } from './onboarding-config.token';
 
 @NgModule({
   imports: [
     OverlayModule
   ],
-  declarations: [OnboardingComponent, OnboardingDirective, CloseDirective, TextContainerDirective],
+  declarations: [OnboardingDirective, CloseDirective, TextContainerDirective],
   exports: [OnboardingDirective, CloseDirective, TextContainerDirective],
-  entryComponents: [OnboardingComponent]
+  providers: [
+    InternalOnboardingService
+  ],
 })
 export class OnboardingModule {
 

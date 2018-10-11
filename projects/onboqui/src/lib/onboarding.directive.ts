@@ -35,6 +35,11 @@ export class OnboardingDirective implements OnInit, OnDestroy {
     this.service.registerOverlay(this);
   }
 
+  ngOnDestroy() {
+    this.service.hideOverlay(this._onboquiId);
+    this.service.destroyOverlay(this._onboquiId);
+  }
+
   public showOverlay() {
     this.service.setText(this.onboquiText);
     const positionStrategy = this.overlay.position()
@@ -66,10 +71,7 @@ export class OnboardingDirective implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    this.service.hideOverlay(this._onboquiId);
-    this.service.destroyOverlay(this._onboquiId);
-  }
+
 
 
 }
