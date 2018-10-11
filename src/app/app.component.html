@@ -1,21 +1,20 @@
 <mat-card>
-
-  <mat-card-title #title>Onboarding Example</mat-card-title>
+  <mat-card-title onboquiOnboarding onboquiText="Das ist Text" onboquiId="3">Onboarding Example</mat-card-title>
   <mat-card-content>
     Here is an example of a card with actions that should be explained to new users.
   </mat-card-content>
   <mat-card-actions>
-    <button mat-flat-button #button1>Basic</button>
-    <button mat-flat-button color="accent" #button2>Link</button>
+    <button onboquiOnboarding onboquiText="Das ist rechts vom Element" onboquiId="4" mat-flat-button>Basic</button>
+    <button mat-flat-button color="accent">Link</button>
     and here we have enough space to the left
-    <button mat-flat-button color="warn" #button3>Delete</button>
+    <button onboquiOnboarding onboquiText="Das ist links vom Element" onboquiId="5" mat-flat-button color="warn" #button3>Delete</button>
   </mat-card-actions>
 </mat-card>
 <br><br>
-<button mat-icon-button #button5><mat-icon>delete</mat-icon></button>
+<button mat-icon-button onboquiOnboarding onboquiText="Das ist delete ohne Background" onboquiId="1"><mat-icon>delete</mat-icon></button>
 
 <div style="background: purple">
-  <button mat-icon-button #button6><mat-icon>delete</mat-icon></button>
+  <button mat-icon-button onboquiOnboarding onboquiText="Das ist delete mit Background" onboquiId="2"><mat-icon>delete</mat-icon></button>
 
   <p #text>Here we have text with background</p>
   <br>

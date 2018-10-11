@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OnboardingService } from '../../projects/onboqui/src/lib/onboarding.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  constructor(private service: OnboardingService) {}
+
   restartOnboarding() {
-    // this.service.showOverlay(1);
+    this.service.showOverlay(1);
   }
 }

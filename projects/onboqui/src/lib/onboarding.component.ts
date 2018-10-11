@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'onboqui-onboqui',
   template: `
-    <p>
+    <p onboquiClose>
       onboqui works!
     </p>
   `,

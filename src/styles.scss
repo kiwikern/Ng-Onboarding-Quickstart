@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+
+.elevate#onboarding-active {
+@include mat-elevation-transition;
+@include mat-elevation(8);
+  z-index: 10000;
+}
+
+.elevate {
+  background: white;
+  position: relative;
+}
+
+.my-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}

@@ -5,20 +5,23 @@ import { AppComponent } from './app.component';
 import { OnboardingModule } from '../../projects/onboqui/src/lib/onboarding.module';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OnboardingViewComponent } from './onboarding-view/onboarding-view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OnboardingViewComponent
   ],
   imports: [
     BrowserModule,
-    OnboardingModule,
+    OnboardingModule.forRoot({component: OnboardingViewComponent}),
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [OnboardingViewComponent]
 })
 export class AppModule { }
