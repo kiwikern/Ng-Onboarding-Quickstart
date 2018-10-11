@@ -24,8 +24,7 @@ export class OnboardingModule {
     return {
       ngModule: OnboardingModule,
       providers: [
-        InternalOnboardingService,
-        {provide: 'config', useValue: config}
+        {provide: OnboardingConfigToken, useValue: config}
       ]
     };
   }

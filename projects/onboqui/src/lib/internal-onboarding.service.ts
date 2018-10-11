@@ -1,11 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { OnboardingDirective } from './onboarding.directive';
 import { OnboardingConfig } from './onboarding-config.interface';
+import { OnboardingConfigToken } from './onboarding-config.token';
 
 @Injectable()
 export class InternalOnboardingService {
 
-  constructor(@Inject('config') private config: OnboardingConfig) {
+  constructor(@Inject(OnboardingConfigToken) private config: OnboardingConfig) {
   }
 
   private overlays: Map<number, OnboardingDirective> = new Map();
