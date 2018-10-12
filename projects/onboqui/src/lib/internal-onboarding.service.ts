@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { OnboardingDirective } from './onboarding.directive';
 import { OnboardingConfig } from './onboarding-config.interface';
+
 import { OnboardingConfigToken } from './onboarding-config.token';
 
 @Injectable()
@@ -29,21 +30,24 @@ export class InternalOnboardingService {
     this.overlays.delete(overlayId);
   }
 
-  public hideOverlay(overlayId?: number) {
-    const overlay = this.overlays.get(overlayId || this.latestOverlayId);
+  public hideOverlay(callingOverlay?: OnboardingDirective) {
+    const overlay = callingOverlay || this.overlays.get(this.latestOverlayId);
     if (overlay) {
       overlay.hideOverlay();
-    }
-    if (this.config.showNextOnClose !== false) {
-      this.showNext();
+      if (this.config.showNextOnClose !== false && this.latestOverlayId === overlay.onboquiId) {
+        this.showNext();
+      }
     }
   }
 
   private showNext() {
-    const overlay = this.overlays.get(this.latestOverlayId + 1);
-    if (overlay) {
-      this.latestOverlayId++;
-      setTimeout(() => overlay.showOverlay(), 500);
+    if (this.overlays.has(this.latestOverlayId + 1)) {
+      setTimeout(() => {
+        if (this.overlays.has(this.latestOverlayId + 1)) {
+          this.latestOverlayId++;
+          this.showOverlay(this.latestOverlayId);
+        }
+      }, 500);
     }
   }
 

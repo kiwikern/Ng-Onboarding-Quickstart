@@ -4,13 +4,13 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { InternalOnboardingService } from './internal-onboarding.service';
 
 @Directive({
-  selector: '[onboquiOnboarding]'
+  selector: '[onboquiOnboardingId]'
 })
 export class OnboardingDirective implements OnInit, OnDestroy {
 
   @Input() onboquiText: string;
 
-  @Input() get onboquiId(): number {
+  @Input('onboquiOnboardingId') get onboquiId(): number {
     return this._onboquiId;
   }
 
@@ -36,7 +36,7 @@ export class OnboardingDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.service.hideOverlay(this._onboquiId);
+    this.service.hideOverlay(this);
     this.service.destroyOverlay(this._onboquiId);
   }
 
@@ -62,7 +62,7 @@ export class OnboardingDirective implements OnInit, OnDestroy {
     overlayRef.attach(onboardingPortal);
     this.renderer.addClass(this.el.nativeElement, 'elevate');
     this.renderer.setAttribute(this.el.nativeElement, 'id', 'onboarding-active');
-    overlayRef.backdropClick().subscribe(() => this.service.hideOverlay(this._onboquiId));
+    overlayRef.backdropClick().subscribe(() => this.service.hideOverlay(this));
   }
 
   public hideOverlay() {
