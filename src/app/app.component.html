@@ -1,26 +1,42 @@
-<mat-card>
-  <mat-card-title onboquiOnboarding onboquiText="Das ist Text" onboquiId="3">Onboarding Example</mat-card-title>
-  <mat-card-content>
-    Here is an example of a card with actions that should be explained to new users.
-  </mat-card-content>
-  <mat-card-actions>
-    <button onboquiOnboarding onboquiText="Das ist rechts vom Element" onboquiId="4" mat-flat-button>Basic</button>
-    <button mat-flat-button color="accent">Link</button>
-    and here we have enough space to the left
-    <button onboquiOnboarding onboquiText="Das ist links vom Element" onboquiId="5" mat-flat-button color="warn" #button3>Delete</button>
-  </mat-card-actions>
-</mat-card>
-<br><br>
-<button mat-icon-button onboquiOnboarding onboquiText="Das ist delete ohne Background" onboquiId="1"><mat-icon>delete</mat-icon></button>
+<div *ngIf="showFirst">
+  <mat-card>
+    <mat-card-title onboquiText="Das ist Text" onboquiOnboardingId="3">Onboarding Example</mat-card-title>
+    <mat-card-content>
+      Here is an example of a card with actions that should be explained to new users.
+    </mat-card-content>
+    <mat-card-actions>
+      <button onboquiText="Das ist rechts vom Element" onboquiOnboardingId="4" mat-flat-button>Basic</button>
+      <button mat-flat-button color="accent">Link</button>
+      and here we have enough space to the left
+      <button onboquiText="Das ist links vom Element" onboquiOnboardingId="5" mat-flat-button color="warn"
+              #button3>Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <br><br>
+  <button mat-icon-button onboquiText="Das ist delete ohne Background" onboquiOnboardingId="1">
+    <mat-icon>delete</mat-icon>
+  </button>
 
-<div style="background: purple">
-  <button mat-icon-button onboquiOnboarding onboquiText="Das ist delete mit Background" onboquiId="2"><mat-icon>delete</mat-icon></button>
+  <div style="background: purple">
+    <button mat-icon-button onboquiText="Das ist delete mit Background" onboquiOnboardingId="2">
+      <mat-icon>delete</mat-icon>
+    </button>
 
-  <p #text>Here we have text with background</p>
-  <br>
+    <p #text>Here we have text with background</p>
+    <br>
+  </div>
+
+
 </div>
-
+<div *ngIf="!showFirst">
+  <button mat-icon-button onboquiText="Das ist delete ohne Background" onboquiOnboardingId="1">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
 
 <div align="center">
   <button mat-raised-button (click)="restartOnboarding()">Restart Onboarding</button>
 </div>
+
+<button (click)="showFirst = !showFirst" mat-button>{{showFirst ? 'Show Second' : 'Show First'}}</button>
