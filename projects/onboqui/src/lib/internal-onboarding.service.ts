@@ -88,4 +88,12 @@ export class InternalOnboardingService {
   public getText(): string {
     return this.currentText;
   }
+
+  public getActiveIndex(): number {
+    return this.latestOverlayId;
+  }
+
+  public getAllIndices(): number[] {
+    return Array.from(this.overlays.keys()).sort();
+  }
 }

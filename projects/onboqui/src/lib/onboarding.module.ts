@@ -7,13 +7,28 @@ import { CloseDirective } from './marker-directives/close.directive';
 import { TextContainerDirective } from './marker-directives/text-container.directive';
 import { OnboardingConfigToken } from './onboarding-config.token';
 import { SkipDirective } from './marker-directives/skip.directive';
+import { DotNavigationComponent } from './dot-navigation/dot-navigation.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     OverlayModule
   ],
-  declarations: [OnboardingDirective, CloseDirective, SkipDirective, TextContainerDirective],
-  exports: [OnboardingDirective, CloseDirective, SkipDirective, TextContainerDirective],
+  declarations: [
+    OnboardingDirective,
+    CloseDirective,
+    SkipDirective,
+    TextContainerDirective,
+    DotNavigationComponent
+  ],
+  exports: [
+    OnboardingDirective,
+    CloseDirective,
+    SkipDirective,
+    TextContainerDirective,
+    DotNavigationComponent
+  ],
   providers: [
     InternalOnboardingService
   ],
@@ -24,7 +39,7 @@ export class OnboardingModule {
     return {
       ngModule: OnboardingModule,
       providers: [
-        {provide: OnboardingConfigToken, useValue: config}
+        {provide: OnboardingConfigToken, useValue: config || {}}
       ]
     };
   }
