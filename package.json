@@ -1,17 +1,19 @@
 {
-  "name": "quickstart-onboarding",
-  "version": "0.0.0",
+  "name": "ng-onboarding-quickstart",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "prestart": "ng build onboqui",
     "start": "ng serve",
     "watchlib": "ng build onboqui --watch",
     "build": "ng build",
+    "buildlib": "ng build onboqui --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "author": "Kim Kern <github@kimkern.de>",
+  "repository": "https://github.com/kiwikern/Ng-Onboarding-Quickstart",
   "dependencies": {
     "@angular/animations": "^6.1.0",
     "@angular/cdk": "^6.4.7",
