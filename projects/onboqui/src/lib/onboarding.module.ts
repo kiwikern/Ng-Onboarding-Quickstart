@@ -6,13 +6,14 @@ import { OnboardingConfig } from './onboarding-config.interface';
 import { CloseDirective } from './marker-directives/close.directive';
 import { TextContainerDirective } from './marker-directives/text-container.directive';
 import { OnboardingConfigToken } from './onboarding-config.token';
+import { SkipDirective } from './marker-directives/skip.directive';
 
 @NgModule({
   imports: [
     OverlayModule
   ],
-  declarations: [OnboardingDirective, CloseDirective, TextContainerDirective],
-  exports: [OnboardingDirective, CloseDirective, TextContainerDirective],
+  declarations: [OnboardingDirective, CloseDirective, SkipDirective, TextContainerDirective],
+  exports: [OnboardingDirective, CloseDirective, SkipDirective, TextContainerDirective],
   providers: [
     InternalOnboardingService
   ],
