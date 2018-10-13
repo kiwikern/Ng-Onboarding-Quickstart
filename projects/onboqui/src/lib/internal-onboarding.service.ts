@@ -33,7 +33,9 @@ export class InternalOnboardingService {
   }
 
   public registerOverlay(overlay: OnboardingDirective) {
-    this.overlays.set(overlay.id, overlay);
+    if (!this.overlays.has(overlay.id)) {
+      this.overlays.set(overlay.id, overlay);
+    }
   }
 
   public destroyOverlay(overlayId: number) {
