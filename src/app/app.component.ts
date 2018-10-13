@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { OnboardingService } from '../../projects/onboqui/src/lib/onboarding.service';
-import { InternalOnboardingService } from '../../projects/onboqui/src/lib/internal-onboarding.service';
+import { OnboardingService } from 'onboqui';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,8 @@ export class AppComponent {
 
   showFirst = true;
 
-  constructor(private service: OnboardingService, private s: InternalOnboardingService) {}
+  constructor(private service: OnboardingService) {
+  }
 
   restartOnboarding() {
     this.service.showOverlay(1);

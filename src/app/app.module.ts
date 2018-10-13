@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { OnboardingModule } from '../../projects/onboqui/src/lib/onboarding.module';
+import { OnboardingModule } from 'onboqui';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OnboardingViewComponent } from './onboarding-view/onboarding-view.component';
