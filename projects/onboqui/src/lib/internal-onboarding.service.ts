@@ -63,12 +63,13 @@ export class InternalOnboardingService {
   }
 
   private showNext() {
+    const delay = Number.isInteger(this.config.showNextDelayMs) ? this.config.showNextDelayMs : 300;
     if (this.overlays.has(this.latestOverlayId + 1)) {
       this.timeoutId = window.setTimeout(() => {
         if (this.overlays.has(this.latestOverlayId + 1)) {
           this.showOverlay(this.latestOverlayId + 1);
         }
-      }, 500);
+      }, delay);
     }
   }
 

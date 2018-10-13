@@ -5,4 +5,5 @@ export interface ComponentType extends Function {
 export interface OnboardingConfig {
   component: ComponentType;
   showNextOnClose?: boolean;
+  showNextDelayMs?: number;
 }

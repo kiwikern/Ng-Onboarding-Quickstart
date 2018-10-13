@@ -14,7 +14,11 @@ import { OnboardingViewComponent } from './onboarding-view/onboarding-view.compo
   ],
   imports: [
     BrowserModule,
-    OnboardingModule.forRoot({component: OnboardingViewComponent}),
+    OnboardingModule.forRoot({
+      component: OnboardingViewComponent,
+      showNextOnClose: true,
+      showNextDelayMs: 300
+    }),
     MatCardModule,
     MatButtonModule,
     MatIconModule,
