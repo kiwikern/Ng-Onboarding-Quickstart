@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "prestart": "ng build onboqui -- watch",
+    "prestart": "ng build onboqui",
     "start": "ng serve",
+    "watchlib": "ng build onboqui --watch",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
