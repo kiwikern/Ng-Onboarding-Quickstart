@@ -1,6 +1,8 @@
-import { ComponentType } from '@angular/cdk/portal';
+export interface ComponentType extends Function {
+  new(...args: any[]);
+}
 
 export interface OnboardingConfig {
-  component: ComponentType<any>;
+  component: ComponentType;
   showNextOnClose?: boolean;
 }

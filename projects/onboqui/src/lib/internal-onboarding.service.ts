@@ -6,35 +6,55 @@ import { OnboardingConfigToken } from './onboarding-config.token';
 
 @Injectable()
 export class InternalOnboardingService {
-
   constructor(@Inject(OnboardingConfigToken) private config: OnboardingConfig) {
   }
 
   private overlays: Map<number, OnboardingDirective> = new Map();
+
   private latestOverlayId: number;
+  private isActive = false;
   private currentText: string;
+  private timeoutId: number;
 
   public showOverlay(id: number) {
+    clearTimeout(this.timeoutId);
+    if (this.isActive) {
+      this.hideOverlay(true);
+    }
+
     const overlay = this.overlays.get(id);
     if (overlay) {
       this.latestOverlayId = id;
+      this.isActive = true;
       overlay.showOverlay();
+    } else {
+      console.warn(`Could not find onboarding view with id ${id}.`);
     }
   }
 
   public registerOverlay(overlay: OnboardingDirective) {
-    this.overlays.set(overlay.onboquiId, overlay);
+    this.overlays.set(overlay.id, overlay);
   }
 
   public destroyOverlay(overlayId: number) {
     this.overlays.delete(overlayId);
   }
 
-  public hideOverlay(callingOverlay?: OnboardingDirective) {
-    const overlay = callingOverlay || this.overlays.get(this.latestOverlayId);
+  public hideOverlay(preventShowingNext?: boolean) {
+    const overlay = this.overlays.get(this.latestOverlayId);
+    this.isActive = false;
     if (overlay) {
       overlay.hideOverlay();
-      if (this.config.showNextOnClose !== false && this.latestOverlayId === overlay.onboquiId) {
+      if (this.config.showNextOnClose !== false && !preventShowingNext) {
+        this.showNext();
+      }
+    }
+  }
+
+  public markOverlayAsHidden(overlayId: number) {
+    if (overlayId === this.latestOverlayId) {
+      this.isActive = false;
+      if (this.config.showNextOnClose !== false) {
         this.showNext();
       }
     }
@@ -42,10 +62,9 @@ export class InternalOnboardingService {
 
   private showNext() {
     if (this.overlays.has(this.latestOverlayId + 1)) {
-      setTimeout(() => {
+      this.timeoutId = window.setTimeout(() => {
         if (this.overlays.has(this.latestOverlayId + 1)) {
-          this.latestOverlayId++;
-          this.showOverlay(this.latestOverlayId);
+          this.showOverlay(this.latestOverlayId + 1);
         }
       }, 500);
     }
