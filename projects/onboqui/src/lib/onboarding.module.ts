@@ -1,5 +1,4 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { OnboardingComponent } from './onboarding.component';
 import { OnboardingDirective } from './onboarding.directive';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { InternalOnboardingService } from './internal-onboarding.service';
